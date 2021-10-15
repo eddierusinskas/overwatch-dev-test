@@ -28,17 +28,17 @@ class Todo extends Model
      */
     protected $casts = [
         'complete' => 'boolean',
-        'user_id' => 'int'
+        'user_id'  => 'int'
     ];
 
     /**
      * Returns a relation with the user.
-    *
-    * This can be accessed through by calling:
-    * $model->user
-    *
-    * @return BelongsTo
-    */
+     *
+     * This can be accessed through by calling:
+     * $model->user
+     *
+     * @return BelongsTo
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(
