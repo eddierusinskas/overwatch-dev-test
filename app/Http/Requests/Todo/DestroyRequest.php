@@ -13,10 +13,10 @@ class DestroyRequest extends FormRequest
      */
     public function authorize()
     {
-        // Check if user is allowed to view todo
+        // Check if user is allowed to delete todo
         $todo = $this->route("todo");
 
-        return $this->user()->can('view', $todo);
+        return $this->user()->can('delete', $todo);
     }
 
     /**

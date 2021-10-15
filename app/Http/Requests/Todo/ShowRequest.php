@@ -15,10 +15,10 @@ class ShowRequest extends FormRequest
      */
     public function authorize()
     {
-        // Check if user is allowed to delete todo
+        // Check if user is allowed to view todo
         $todo = $this->route("todo");
 
-        return $this->user()->can('delete', $todo);
+        return $this->user()->can('view', $todo);
     }
 
     /**
