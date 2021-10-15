@@ -16,11 +16,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+// Group all routes that need authentication
+Route::group([
+    "middleware" => "auth:sanctum"
+], function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+    Route::resource('todos', '\App\Http\Controllers\TodoController')
+         ->except(['edit', 'create']);
 });
 
-Route::resource('todos', '\App\Http\Controllers\TodoController')->except(['edit', 'create']);
+
 
 Route::post('/login', function (Request $request) {
     $request->validate([
